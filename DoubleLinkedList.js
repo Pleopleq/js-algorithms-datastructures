@@ -77,6 +77,33 @@ class DoubleLinkedList {
     this.length++;
     return this;
   }
+
+  get(index) {
+    if (index < 0 || index >= this.length) return undefined;
+    let current, counter;
+    if (index <= this.length / 2) {
+      counter = 0;
+      current = this.head;
+      while (counter !== index) {
+        current = current.next;
+        counter++;
+      }
+    } else {
+      counter = this.length - 1;
+      current = this.tail;
+      while (counter !== index) {
+        current = current.prev;
+        counter--;
+      }
+    }
+    return current;
+  }
+
+  set(index, value) {
+    let node = this.get(index);
+    node.value = value;
+    return true;
+  }
 }
 
 const list = new DoubleLinkedList();
@@ -84,3 +111,4 @@ const list = new DoubleLinkedList();
 list.push(10);
 list.push("middle");
 list.push(20);
+list.push(30);
