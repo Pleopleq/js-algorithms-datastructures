@@ -101,8 +101,11 @@ class DoubleLinkedList {
 
   set(index, value) {
     let node = this.get(index);
-    node.value = value;
-    return true;
+    if (node) {
+      node.value = value;
+      return true;
+    }
+    return false;
   }
 }
 
