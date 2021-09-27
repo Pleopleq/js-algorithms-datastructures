@@ -107,6 +107,42 @@ class DoubleLinkedList {
     }
     return false;
   }
+
+  insert(index, value) {
+    if (index < 0 || index > this.length) return undefined;
+    if (index === 0) return !!this.unshift(value);
+    if (index === this.length) return !!this.push(value);
+
+    let node = new Node(value);
+    let currentNode = this.get(index - 1);
+    let nextCurrent = currentNode.next;
+
+    currentNode.next = node;
+    node.prev = currentNode;
+    node.next = nextCurrent;
+    nextCurrent.prev = node;
+
+    this.length++;
+    return true;
+  }
+
+  remove(index) {
+    if (index < 0 || index >= this.length) return undefined;
+    if (index === 0) return this.shift(index);
+    if (index === this.length - 1) return this.pop(index);
+
+    let removedNode = this.get(index);
+    let previousNode = removedNode.prev;
+    let nextNode = removedNode.next;
+
+    previousNode.next = nextNode;
+    nextNode.prev = previousNode;
+    removedNode.next = null;
+    removedNode.prev = null;
+
+    this.length--;
+    return removedNode;
+  }
 }
 
 const list = new DoubleLinkedList();
