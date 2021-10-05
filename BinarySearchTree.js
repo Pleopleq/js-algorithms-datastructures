@@ -97,6 +97,20 @@ class BinarySearchTree {
     traverse(current);
     return visited;
   }
+
+  depthFirstInOrder() {
+    let visited = [];
+    let current = this.root;
+
+    function traverse(node) {
+      if (node.left) traverse(node.left);
+      visited.push(node.value);
+      if (node.right) traverse(node.right);
+    }
+
+    traverse(current);
+    return visited;
+  }
 }
 
 var tree = new BinarySearchTree();
