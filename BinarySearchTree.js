@@ -69,6 +69,34 @@ class BinarySearchTree {
     }
     return visited;
   }
+
+  depthFirstOrderPre() {
+    let visited = [];
+    let current = this.root;
+
+    function traverse(node) {
+      visited.push(node.value);
+      if (node.left) traverse(node.left);
+      if (node.right) traverse(node.right);
+    }
+
+    traverse(current);
+    return visited;
+  }
+
+  depthFirstOrderPost() {
+    let visited = [];
+    let current = this.root;
+
+    function traverse(node) {
+      if (node.left) traverse(node.left);
+      if (node.right) traverse(node.right);
+      visited.push(node.value);
+    }
+
+    traverse(current);
+    return visited;
+  }
 }
 
 var tree = new BinarySearchTree();
