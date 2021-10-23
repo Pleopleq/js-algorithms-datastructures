@@ -3,8 +3,8 @@
 1. Algorithms
 
     1. Sorting Algorithms
-        *Bubble Sort
-        *Selection Sort
+        * Bubble Sort
+        * Selection Sort
 
     2. Searching Algorithms
         * Binary Search
