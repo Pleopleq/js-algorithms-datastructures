@@ -5,6 +5,9 @@
     1. Sorting Algorithms
         * Bubble Sort
         * Selection Sort
+        * Insertion Sort
+        * Merge Sort
+        * Quick Sort
 
     2. Searching Algorithms
         * Binary Search
