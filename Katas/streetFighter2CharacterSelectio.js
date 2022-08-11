@@ -58,43 +58,41 @@
 
 // ['E.Honda', 'Chun Li', 'Ken', 'M.Bison', 'Sagat', 'Dhalsim', 'Sagat']
 
-
-
-function streetFighterSelection(fighters, position, moves){
+function streetFighterSelection(fighters, position, moves) {
   const gridLength = fighters[0].length;
-  
-  const savedCharacter = moves.map(move => {
-    if(move === "up") {
-      fighters[position[0] = 0][position[1]]
 
-      return fighters[position[0]][position[1]]
+  const savedCharacter = moves.map((move) => {
+    if (move === "up") {
+      fighters[(position[0] = 0)][position[1]];
+
+      return fighters[position[0]][position[1]];
     }
-    
-    if(move === "down") {
-      fighters[position[0] = 1][position[1]]
-      
-      return fighters[position[0]][position[1]]
+
+    if (move === "down") {
+      fighters[(position[0] = 1)][position[1]];
+
+      return fighters[position[0]][position[1]];
     }
-    
-    if(move === "right") {
-      fighters[position[0]][position[1] += 1]
-      
-      if(fighters[position[0]][position[1]] === undefined) {
-        return fighters[position[0]][position[1] -= gridLength]
+
+    if (move === "right") {
+      fighters[position[0]][(position[1] += 1)];
+
+      if (fighters[position[0]][position[1]] === undefined) {
+        return fighters[position[0]][(position[1] -= gridLength)];
       }
-      
-      return fighters[position[0]][position[1]]
+
+      return fighters[position[0]][position[1]];
     }
-    
-    if(move === "left") {
-      fighters[position[0]][position[1] -= 1]
-      
-      if(fighters[position[0]][position[1]] === undefined) {
-        return fighters[position[0]][position[1] += gridLength]
+
+    if (move === "left") {
+      fighters[position[0]][(position[1] -= 1)];
+
+      if (fighters[position[0]][position[1]] === undefined) {
+        return fighters[position[0]][(position[1] += gridLength)];
       }
-      
-      return fighters[position[0]][position[1]]
+
+      return fighters[position[0]][position[1]];
     }
-  })
-  
+  });
   return savedCharacter;
+}
