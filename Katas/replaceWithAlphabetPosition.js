@@ -14,17 +14,20 @@
 
 function alphabetPosition(text) {
     let alphabet = 'abcdefghijklmnopqrstuvwxyz';
-    let formattedText = text.replace(/\W/g, '').toLowerCase()
+    let formattedText = text.replace(/[^a-z0-9]/gi, '').toLowerCase()
     const hashHelper = new Map()
     let string = ""
   
-    
     for(let i = 0; i < alphabet.length; i++){
-      hashHelper.set(alphabet[i], i + 1)
+        hashHelper.set(alphabet[i], i + 1)
     }
     
     for(let elem of formattedText) {
-      string += ` ${hashHelper.get(elem)}`
+      if(!hashHelper.get(elem)) { 
+        string += '' 
+      } else {
+        string += ` ${hashHelper.get(elem)}`
+      }
     }
     
     return string.trim() 
