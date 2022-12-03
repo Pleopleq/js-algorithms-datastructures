@@ -1,7 +1,7 @@
 const path = require("path");
 const fs = require("fs");
 const input = fs
-    .readFileSync(path.join(__dirname, "smallInput.txt"), "utf8")
+    .readFileSync(path.join(__dirname, "input.txt"), "utf8")
     .replace(/\r/g, "")
     .trim()
     .split("\n");
@@ -18,29 +18,37 @@ function getPriorities() {
     }
 
     for (let i = 0; i < upperAlphabet.length; i++) {
-        upperPriority[upperAlphabet[i]] = i + 1
+        upperPriority[upperAlphabet[i]] = 27 + i
     }
     return [lowerPriority, upperPriority]
 }
 
 function rucksackDivision() {
-    return input.map(rucksack => {
+    const [lower, upper] = getPriorities()
+    let total = 0
+
+    input.forEach(rucksack => {
         const firstCompartment = rucksack.slice(rucksack[0], rucksack.length / 2)
         const secondCompartment = rucksack.slice(rucksack.length / 2, rucksack.length)
-        return `${firstCompartment},${secondCompartment}`
+        const hashHelper = {}
+
+        for (let elem of firstCompartment) {
+            hashHelper[elem] = elem
+        }
+
+        for (let elem of secondCompartment) {
+            if (elem.toLowerCase() === hashHelper[elem]) {
+                return total += lower[elem]
+            }
+
+            if (elem.toUpperCase() === hashHelper[elem]) {
+                return total += upper[elem]
+            }
+        }
+
     })
+
+    console.log(total)
 }
 
-// MAIN
-
-function rucksackReorganization() {
-    const rucksackComparments = rucksackDivision()
-    const [lower, upper] = getPriorities()
-
-    console.log(lower, upper)
-    return rucksackComparments
-}
-
-console.log(rucksackReorganization())
-
-
+rucksackDivision()
