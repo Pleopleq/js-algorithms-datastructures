@@ -1,7 +1,7 @@
 const path = require("path");
 const fs = require("fs");
 const input = fs
-    .readFileSync(path.join(__dirname, "input.txt"), "utf8")
+    .readFileSync(path.join(__dirname, "smallInput.txt"), "utf8")
     .replace(/\r/g, "")
     .trim()
     .split("\n");
@@ -51,4 +51,24 @@ function rucksackDivision() {
     console.log(total)
 }
 
+function elvesBadges() {
+    const [lower, upper] = getPriorities()
+
+    const priorities = { ...lower, ...upper }
+
+    let sum = 0
+
+    for (let i = 0; i < input.length; i += 3) {
+        let item = input[i].split('')
+            .filter(letter => input[i + 1]
+                .includes(letter) && input[i + 2]
+                    .includes(letter))
+        sum += priorities[item[0]]
+    }
+
+    console.log(sum)
+}
+
 rucksackDivision()
+elvesBadges()
+
