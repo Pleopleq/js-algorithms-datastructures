@@ -11,13 +11,31 @@ class LinkedList {
         let currentNode = this.firstNode
         let currentIndex = 0
 
-        for (let i = 0; i < index; i++) {
+        while(currentIndex < index) {
             currentNode = currentNode?.next
-            currentIndex += i
+            currentIndex += 1
+        } 
 
-            if(!currentNode) { return null }
-            return currentNode
-        }
+        if(!currentNode) { return null }
+        return currentNode
+    }
+
+    index_of(value: string) {
+        let currentNode = this.firstNode
+        let currentIndex = 0
+
+        do {
+            if (currentNode?.value === value) {
+                return currentIndex
+            }
+            
+            currentNode = currentNode?.next
+            currentIndex += 1
+        } while (currentNode);
+
+        if(!currentNode) { return null }
+
+        return currentIndex
     }
 
 }
@@ -31,8 +49,10 @@ node01.next = node02;
 node02.next = node03;
 node03.next = node04;
 
-const linked = new LinkedList(node03)
+const linked = new LinkedList(node01)
 
-console.log(linked.read(2))
+console.log(linked.read(0))
+console.log(linked.index_of("node two"))
+console.log(linked.index_of("node twsddso"))
 
 export default LinkedList
