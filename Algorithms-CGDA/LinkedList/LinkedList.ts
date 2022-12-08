@@ -20,7 +20,7 @@ class LinkedList {
         return currentNode
     }
 
-    index_of(value: string) {
+    indexOf(value: string) {
         let currentNode = this.firstNode
         let currentIndex = 0
 
@@ -38,6 +38,15 @@ class LinkedList {
         return currentIndex
     }
 
+    getAll() {
+        let currentNode = this.firstNode
+
+        while(currentNode){
+            console.log(currentNode)
+            currentNode = currentNode.next
+        }
+    }
+
 }
 
 const node01 = new Node("node one")
@@ -52,7 +61,9 @@ node03.next = node04;
 const linked = new LinkedList(node01)
 
 console.log(linked.read(0))
-console.log(linked.index_of("node two"))
-console.log(linked.index_of("node twsddso"))
+console.log(linked.indexOf("node two"))
+console.log(linked.indexOf("node twsddso"))
+
+linked.getAll()
 
 export default LinkedList
