@@ -60,6 +60,19 @@ class LinkedList {
         return currentNode
     }
 
+    pop() {
+        let currentNode = this.firstNode
+        let lastNode: Node
+
+        while(currentNode?.next?.next !== null) {
+            currentNode = currentNode?.next
+        }
+
+        lastNode = currentNode.next
+        currentNode.next = null
+
+        return lastNode
+    }
 }
 
 const node01 = new Node("node one")
@@ -74,11 +87,5 @@ node03.next = node04;
 node04.next = node05;
 
 const linked = new LinkedList(node01)
-
-console.log(linked.read(0))
-console.log(linked.indexOf("node two"))
-console.log(linked.indexOf("node twsddso"))
-
-console.log("LAST NODE IS: ", linked.getLast())
 
 export default LinkedList
