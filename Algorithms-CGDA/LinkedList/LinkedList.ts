@@ -60,18 +60,22 @@ class LinkedList {
         return currentNode
     }
 
-    pop() {
-        let currentNode = this.firstNode
-        let lastNode: Node
-
-        while(currentNode?.next?.next !== null) {
-            currentNode = currentNode?.next
+    removeAtIndex(index: number) {
+        if(index === 0){
+            this.firstNode = this.firstNode?.next
         }
 
-        lastNode = currentNode.next
-        currentNode.next = null
+        let currentNode = this.firstNode
+        let currentIndex = 0
 
-        return lastNode
+        while(currentIndex < (index - 1)) {
+            currentNode = currentNode?.next
+            currentIndex += 1
+        }
+
+        let nodeAfter = currentNode?.next?.next 
+
+        currentNode!.next = nodeAfter
     }
 }
 
