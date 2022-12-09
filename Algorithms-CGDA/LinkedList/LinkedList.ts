@@ -40,11 +40,14 @@ class LinkedList {
 
     getAll() {
         let currentNode = this.firstNode
+        const nodes: Node[] = [] 
 
         while(currentNode){
-            console.log(currentNode)
+            nodes.push(currentNode)
             currentNode = currentNode.next
         }
+        
+        return nodes
     }
 
     getLast() {
