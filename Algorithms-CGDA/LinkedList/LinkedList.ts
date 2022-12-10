@@ -82,6 +82,8 @@ class LinkedList {
         let currentNode = this.firstNode
         let removedNode: Node
 
+        if(!currentNode) { return null }
+
         if(!currentNode?.next) {
             this.firstNode = null
             return currentNode
@@ -95,6 +97,22 @@ class LinkedList {
         currentNode.next = null
 
         return removedNode
+    }
+
+    reverse() {
+        let previousNode: Node | null = null
+        let currentNode = this.firstNode
+
+        while(currentNode) {
+            let nextNode = currentNode.next
+            currentNode.next = previousNode
+
+            previousNode = currentNode
+            currentNode = nextNode
+        }
+
+        this.firstNode = previousNode
+        return this.firstNode
     }
 }
 
@@ -110,5 +128,7 @@ node03.next = node04;
 node04.next = node05;
 
 const linked = new LinkedList(node01)
+
+console.log(linked.reverse())
 
 export default LinkedList
