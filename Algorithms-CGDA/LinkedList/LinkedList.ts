@@ -77,6 +77,25 @@ class LinkedList {
 
         currentNode!.next = nodeAfter
     }
+
+    pop() {
+        let currentNode = this.firstNode
+        let removedNode: Node
+
+        if(!currentNode?.next) {
+            this.firstNode = null
+            return currentNode
+        }
+
+        while(currentNode?.next?.next !== null ) {
+            currentNode = currentNode?.next
+        }
+
+        removedNode = currentNode.next
+        currentNode.next = null
+
+        return removedNode
+    }
 }
 
 const node01 = new Node("node one")
