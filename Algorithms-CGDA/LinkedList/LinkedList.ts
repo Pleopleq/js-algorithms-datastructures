@@ -20,6 +20,32 @@ class LinkedList {
         return currentNode
     }
 
+    insertAt(index: number, value: string) {
+        let currentNode = this.firstNode
+        let currentIndex = 0
+        const newNode = new Node(value)
+
+        if(index === 0) {
+            newNode.next = this.firstNode
+            this.firstNode = newNode
+            return this.firstNode
+        }
+
+        while(currentIndex < (index - 1)) {
+            currentNode = currentNode?.next
+            currentIndex += 1
+        }
+        
+        if(!currentNode) { 
+            console.error("Index is out of range")
+            return null
+        }
+
+        newNode.next = currentNode.next
+        currentNode.next = newNode
+        return currentNode
+    }
+
     indexOf(value: string) {
         let currentNode = this.firstNode
         let currentIndex = 0
@@ -128,7 +154,5 @@ node03.next = node04;
 node04.next = node05;
 
 const linked = new LinkedList(node01)
-
-console.log(linked.reverse())
 
 export default LinkedList
